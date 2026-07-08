@@ -11,15 +11,14 @@ pipeline {
 
         stage('Install Packages') {
             steps {
-                bat 'pip install -r requirements.txt'
+                sh 'pip3 install -r requirements.txt'
             }
         }
 
         stage('Run Program') {
             steps {
-                bat 'python app.py'
+                sh 'python3 app.py'
             }
         }
-
     }
 }
