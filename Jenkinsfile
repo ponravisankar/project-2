@@ -3,37 +3,23 @@ pipeline {
 
     stages {
 
-        stage('Install Dependencies') {
+        stage('Checkout') {
             steps {
-                dir('python-app') {
-                    bat '"C:\\Users\\ponravisankar\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m pip install -r requirements.txt'
-                }
+                checkout scm
             }
         }
 
-        stage('Run Tests') {
+        stage('Install Packages') {
             steps {
-                dir('python-app') {
-                    bat '"C:\\Users\\ponravisankar\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" test.py'
-                }
+                bat 'pip install -r requirements.txt'
             }
         }
 
-        stage('Run Application') {
+        stage('Run Program') {
             steps {
-                dir('python-app') {
-                    bat '"C:\\Users\\ponravisankar\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" app.py'
-                }
+                bat 'python app.py'
             }
         }
-    }
 
-    post {
-        success {
-            echo 'Pipeline executed successfully!'
-        }
-        failure {
-            echo 'Pipeline failed. Please check logs.'
-        }
     }
 }
