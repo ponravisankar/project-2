@@ -13,7 +13,7 @@ pipeline {
 
         stage('Run Program') {
             steps {
-                sh 'python3 app.py'
+                bat 'python3 app.py'
             }
         }
     }
