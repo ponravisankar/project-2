@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
                 echo 'Checking out source code...'
@@ -12,7 +13,7 @@ pipeline {
         stage('Run Program') {
             steps {
                 echo 'Running Python Program...'
-                sh 'python3 app.py'
+                sh 'python3 calculator-app/app.py'
             }
         }
     }
